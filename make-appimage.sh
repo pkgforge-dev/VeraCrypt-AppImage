@@ -14,7 +14,11 @@ export DESKTOP=https://raw.githubusercontent.com/veracrypt/VeraCrypt/refs/heads/
 # Deploy dependencies
 quick-sharun /usr/bin/veracrypt
 
-# Additional changes can be done in between here
+# The archlinux package is missing the translation files!
+mkdir -p ./AppDir/share/veracrypt/languages
+git clone --depth 1 https://github.com/veracrypt/VeraCrypt.git ./VeraCrypt
+cp -v ./VeraCrypt/Translations/* ./AppDir/share/veracrypt/languages
+rm -rf ./VeraCrypt
 
 # Turn AppDir into AppImage
 quick-sharun --make-appimage
